@@ -1,8 +1,0 @@
-docs/
-\*.md
-
-tsconfig.json
-.gitignore
-.nccignore
-
-.github/
