@@ -1,0 +1,22 @@
+name: 'Structurizr Exporter'
+description: 'Extracts Structurizr diagrams as SVG images using Structurizr Lite and Playwright.'
+author: 'Heavywater'
+inputs:
+  structurizr-path:
+    description: 'Path to Structurizr workspace folder'
+    required: false
+    default: 'docs/structurizr/'
+  output-path:
+    description: 'Directory to store exported SVG images'
+    required: false
+    default: 'docs/images/'
+  structurizr-version:
+    description: 'Structurizr Lite Docker version'
+    required: false
+    default: 'latest'
+runs:
+  using: 'node20'
+  main: 'dist/index.js'
+branding:
+  icon: 'layers'
+  color: 'blue'

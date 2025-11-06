@@ -1,0 +1,22 @@
+name: Test Structurizr Exporter
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run Structurizr Exporter (local action)
+        uses: ./
+        with:
+          structurizr-path: docs/structurizr
+          output-path: docs/images
+          structurizr-version: latest
+
+      - name: Show exported diagrams
+        run: ls -l docs/images
