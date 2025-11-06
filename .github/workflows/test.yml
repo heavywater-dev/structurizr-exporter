@@ -1,6 +1,9 @@
 name: Test Structurizr Exporter
 
 on:
+  push:
+    branches:
+      - '**'
   workflow_dispatch:
 
 jobs:
