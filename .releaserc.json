@@ -59,13 +59,14 @@
 		[
 			"@semantic-release/npm",
 			{
-				"npmPublish": false
+				"npmPublish": false,
+				"tarballDir": "dist"
 			}
 		],
 		[
 			"@semantic-release/git",
 			{
-				"assets": ["package.json", "CHANGELOG.md", "dist/**"],
+				"assets": ["package.json", "CHANGELOG.md"],
 				"message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
 			}
 		],
@@ -78,8 +79,7 @@
 				"successComment": "This ${issue.pull_request ? 'PR is included' : 'issue has been resolved'} in version ${nextRelease.version} :tada:",
 				"failTitle": "The automated release is failing",
 				"failComment": "The release from branch `${branch.name}` had failed due to the following errors:\n- ${errors.map(err => err.message).join('\\n- ')}",
-				"labels": ["semantic-release"],
-				"assignees": ["@heavywater-dev"]
+				"labels": ["semantic-release"]
 			}
 		]
 	]

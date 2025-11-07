@@ -24,15 +24,30 @@ importers:
       '@semantic-release/changelog':
         specifier: ^6.0.3
         version: 6.0.3(semantic-release@22.0.12(typescript@5.9.3))
+      '@semantic-release/commit-analyzer':
+        specifier: ^11.1.0
+        version: 11.1.0(semantic-release@22.0.12(typescript@5.9.3))
       '@semantic-release/git':
         specifier: ^10.0.1
         version: 10.0.1(semantic-release@22.0.12(typescript@5.9.3))
+      '@semantic-release/github':
+        specifier: ^9.2.6
+        version: 9.2.6(semantic-release@22.0.12(typescript@5.9.3))
+      '@semantic-release/npm':
+        specifier: ^11.0.3
+        version: 11.0.3(semantic-release@22.0.12(typescript@5.9.3))
+      '@semantic-release/release-notes-generator':
+        specifier: ^12.1.0
+        version: 12.1.0(semantic-release@22.0.12(typescript@5.9.3))
       '@types/node':
         specifier: ^24.10.0
         version: 24.10.0
       '@vercel/ncc':
         specifier: ^0.38.2
         version: 0.38.4
+      conventional-changelog-conventionalcommits:
+        specifier: ^7.0.2
+        version: 7.0.2
       semantic-release:
         specifier: ^22.0.12
         version: 22.0.12(typescript@5.9.3)
@@ -324,6 +339,10 @@ packages:
 
   conventional-changelog-angular@7.0.0:
     resolution: {integrity: sha512-ROjNchA9LgfNMTTFSIWPzebCwOGFdgkEq45EnvvrmSLvCtAw0HSmrCs7/ty+wAeYUZyNay0YMUNYFTRL72PkBQ==}
+    engines: {node: '>=16'}
+
+  conventional-changelog-conventionalcommits@7.0.2:
+    resolution: {integrity: sha512-NKXYmMR/Hr1DevQegFB4MwfM5Vv0m4UIxKZTTYuD98lpTknaZlSRrDOG4X7wIXpGkfsYxZTghUN+Qq+T0YQI7w==}
     engines: {node: '>=16'}
 
   conventional-changelog-writer@7.0.1:
@@ -1561,6 +1580,10 @@ snapshots:
       proto-list: 1.2.4
 
   conventional-changelog-angular@7.0.0:
+    dependencies:
+      compare-func: 2.0.0
+
+  conventional-changelog-conventionalcommits@7.0.2:
     dependencies:
       compare-func: 2.0.0
 
