@@ -77,14 +77,15 @@ jobs:
         run: pnpm run build
 
       - name: Install Playwright browsers
-        run: npx playwright install chromium
+        run: pnpm exec playwright install chromium
 
       - name: Semantic Release
         id: release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          pnpm exec semantic-release > release-output.txt 2>&1
+          pnpm exec semantic-release --debug > release-output.txt 2>&1 || true
+          cat release-output.txt
 
           if grep -q "Published release" release-output.txt; then
             VERSION=$(grep "Published release" release-output.txt | sed -n 's/.*Published release \([0-9.]*\).*/\1/p')
@@ -94,6 +95,7 @@ jobs:
           else
             echo "new_release_published=false" >> $GITHUB_OUTPUT
             echo "No release created"
+            cat release-output.txt
           fi
 
       - name: Update major version tag
