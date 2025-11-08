@@ -4,6 +4,18 @@ import fs from 'fs/promises'
 import path from 'path'
 import { chromium } from 'playwright'
 
+async function ensurePlaywrightBrowsers() {
+	try {
+		core.startGroup('Installing Playwright browsers')
+		core.info('Checking and installing Chromium browser...')
+		await exec('npx', ['playwright', 'install', 'chromium', '--with-deps'])
+		core.endGroup()
+	} catch (error) {
+		core.warning('Failed to install Playwright browsers, trying to continue...')
+		throw error
+	}
+}
+
 async function waitForStructurizr() {
 	for (let i = 0; i < 30; i++) {
 		try {
@@ -78,6 +90,8 @@ async function main() {
 	const structurizrVersion = core.getInput('structurizr-version') || 'latest'
 
 	try {
+		await ensurePlaywrightBrowsers()
+
 		core.startGroup('Starting Structurizr Lite')
 		await exec('docker', [
 			'run',

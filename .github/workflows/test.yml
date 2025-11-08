@@ -30,9 +30,6 @@ jobs:
       - name: Build
         run: pnpm run build
 
-      - name: Install Playwright browsers
-        run: pnpm exec playwright install chromium
-
       - name: Run Structurizr Exporter (local action)
         uses: ./
         with:

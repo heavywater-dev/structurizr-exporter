@@ -50,12 +50,14 @@ jobs:
 
 ## How it works
 
-1. Starts Structurizr Lite in a Docker container
-2. Loads your workspace from the specified folder
-3. Uses Playwright to export each diagram to SVG
-4. Saves files to the specified folder
+1. Automatically installs required Playwright browsers (Chromium)
+2. Starts Structurizr Lite in a Docker container
+3. Loads your workspace from the specified folder
+4. Uses Playwright to export each diagram to SVG
+5. Saves files to the specified folder
 
 ## Requirements
 
 - `workspace.dsl` or `workspace.json` file in the `structurizr-path` folder
 - Docker available in runner environment (included in GitHub-hosted runners)
+- No additional setup required - Playwright browsers install automatically
