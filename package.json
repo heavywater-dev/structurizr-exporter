@@ -9,7 +9,16 @@
 		"prepare": "pnpm run build"
 	},
 	"keywords": [
-		"structurizr"
+		"structurizr",
+		"architecture",
+		"diagrams",
+		"c4-model",
+		"github-action",
+		"svg",
+		"export",
+		"documentation",
+		"automation",
+		"devtools"
 	],
 	"author": "heavywater-dev",
 	"license": "ISC",

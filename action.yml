@@ -1,6 +1,6 @@
 name: 'Structurizr Exporter'
-description: 'Extracts Structurizr diagrams as SVG images using Structurizr Lite and Playwright.'
-author: 'Heavywater'
+description: 'Export Structurizr architecture diagrams to SVG format automatically. No setup required - just point to your .dsl files!'
+author: 'heavywater-dev'
 inputs:
   structurizr-path:
     description: 'Path to Structurizr workspace folder'
