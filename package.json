@@ -4,8 +4,8 @@
 	"description": "GitHub Action for exporting Structurizr diagrams to SVG format",
 	"main": "dist/index.js",
 	"scripts": {
-		"build": "tsc",
-		"start": "node dist/index.js",
+		"clean": "rm -rf dist",
+		"build": "ncc build src/index.ts -o dist -m && find dist -type f \\( -name '*.png' -o -name '*.ico' -o -name '*.jpg' \\) -delete",
 		"prepare": "pnpm run build"
 	},
 	"keywords": [
@@ -24,16 +24,16 @@
 		"playwright": "^1.56.1"
 	},
 	"devDependencies": {
-		"@types/node": "^24.10.0",
-		"@vercel/ncc": "^0.38.2",
-		"typescript": "^5.9.3",
-		"semantic-release": "^22.0.12",
 		"@semantic-release/changelog": "^6.0.3",
 		"@semantic-release/commit-analyzer": "^11.1.0",
 		"@semantic-release/git": "^10.0.1",
 		"@semantic-release/github": "^9.2.6",
 		"@semantic-release/npm": "^11.0.3",
 		"@semantic-release/release-notes-generator": "^12.1.0",
-		"conventional-changelog-conventionalcommits": "^7.0.2"
+		"@types/node": "^24.10.0",
+		"@vercel/ncc": "^0.38.4",
+		"conventional-changelog-conventionalcommits": "^7.0.2",
+		"semantic-release": "^22.0.12",
+		"typescript": "^5.9.3"
 	}
 }
