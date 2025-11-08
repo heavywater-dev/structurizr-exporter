@@ -1,6 +1,6 @@
 {
 	"name": "structurizr-exporter",
-	"version": "1.0.2",
+	"version": "1.0.3",
 	"description": "GitHub Action for exporting Structurizr diagrams to SVG format",
 	"main": "dist/index.js",
 	"scripts": {

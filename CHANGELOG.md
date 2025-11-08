@@ -1,3 +1,10 @@
+## [1.0.3](https://github.com/heavywater-dev/structurizr-exporter/compare/v1.0.2...v1.0.3) (2025-11-08)
+
+
+### Code Refactoring
+
+* prepare action for marketplace ([#7](https://github.com/heavywater-dev/structurizr-exporter/issues/7)) ([907f7de](https://github.com/heavywater-dev/structurizr-exporter/commit/907f7ded14f5fc5716c31d7877ca2345959f6099))
+
 ## [1.0.2](https://github.com/heavywater-dev/structurizr-exporter/compare/v1.0.1...v1.0.2) (2025-11-08)
 
 
