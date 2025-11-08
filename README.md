@@ -1,6 +1,17 @@
 # Structurizr Exporter
 
-GitHub Action for automatically exporting Structurizr diagrams to SVG format.
+**Automatically export Structurizr architecture diagrams to SVG format**
+
+Perfect for keeping your documentation up-to-date! This GitHub Action takes your Structurizr DSL files and generates beautiful SVG diagrams that can be embedded in your README, wikis, or documentation sites.
+
+## Quick Start
+
+```yaml
+- name: Export architecture diagrams
+  uses: heavywater-dev/structurizr-exporter@v1
+```
+
+That's it! The action will find your Structurizr files in `docs/structurizr/` and output SVG diagrams to `docs/images/`.
 
 ## Usage
 
@@ -21,23 +32,33 @@ GitHub Action for automatically exporting Structurizr diagrams to SVG format.
 | `output-path`         | Folder to save SVG files                  | `docs/images/`      |
 | `structurizr-version` | Structurizr Lite Docker image version     | `latest`            |
 
-## Example workflow
+## Complete Example
 
 ```yaml
-name: Generate Architecture Diagrams
+name: Update Architecture Diagrams
 
 on:
   push:
     paths: ['docs/structurizr/**']
+  pull_request:
+    paths: ['docs/structurizr/**']
 
+permissions:
+  contents: write
 jobs:
-  export-diagrams:
+  generate-diagrams:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Export diagrams
+      - name: Export architecture diagrams
         uses: heavywater-dev/structurizr-exporter@v1
+        with:
+          structurizr-path: docs/structurizr
+          output-path: docs/images
 
       - name: Commit generated diagrams
         run: |
@@ -61,3 +82,17 @@ jobs:
 - `workspace.dsl` or `workspace.json` file in the `structurizr-path` folder
 - Docker available in runner environment (included in GitHub-hosted runners)
 - No additional setup required - Playwright browsers install automatically
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## License
+
+ISC License - see [LICENSE](LICENSE) file for details.
+
+## Support
+
+- [Structurizr Documentation](https://docs.structurizr.com/)
+- [Report Issues](https://github.com/heavywater-dev/structurizr-exporter/issues)
+- [Discussions](https://github.com/heavywater-dev/structurizr-exporter/discussions)
