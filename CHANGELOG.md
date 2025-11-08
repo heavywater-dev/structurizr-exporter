@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/heavywater-dev/structurizr-exporter/compare/v1.0.0...v1.0.1) (2025-11-08)
+
+
+### Bug Fixes
+
+* project build ([#5](https://github.com/heavywater-dev/structurizr-exporter/issues/5)) ([b5263ac](https://github.com/heavywater-dev/structurizr-exporter/commit/b5263ac52b3044e4c5969b67473ba1ec1ce39b31))
+
 ## 1.0.0 (2025-11-07)
 
 
