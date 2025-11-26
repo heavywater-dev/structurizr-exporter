@@ -57,16 +57,9 @@
 			}
 		],
 		[
-			"@semantic-release/npm",
-			{
-				"npmPublish": false,
-				"tarballDir": "dist"
-			}
-		],
-		[
 			"@semantic-release/git",
 			{
-				"assets": ["package.json", "CHANGELOG.md"],
+				"assets": ["package.json", "CHANGELOG.md", "dist/**/*"],
 				"message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
 			}
 		],
@@ -76,9 +69,9 @@
 				"assets": [{ "path": "dist/**", "label": "Distribution files" }],
 				"addReleases": "bottom",
 				"releasedLabels": ["released"],
-				"successComment": "This ${issue.pull_request ? 'PR is included' : 'issue has been resolved'} in version ${nextRelease.version} :tada:",
+				"successComment": "This ${issue.pull_request ? 'PR is included' : 'issue has been resolved'} in version ${nextRelease.version} 🎉",
 				"failTitle": "The automated release is failing",
-				"failComment": "The release from branch `${branch.name}` had failed due to the following errors:\n- ${errors.map(err => err.message).join('\\n- ')}",
+				"failComment": "The release from branch `${branch.name}` failed:\n- ${errors.map(err => err.message).join('\\n- ')}",
 				"labels": ["semantic-release"]
 			}
 		]
