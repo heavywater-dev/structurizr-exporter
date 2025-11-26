@@ -1,3 +1,15 @@
+## [1.0.6](https://github.com/heavywater-dev/structurizr-exporter/compare/v1.0.5...v1.0.6) (2025-11-26)
+
+
+### Bug Fixes
+
+* release pipeline ([#11](https://github.com/heavywater-dev/structurizr-exporter/issues/11)) ([be6071e](https://github.com/heavywater-dev/structurizr-exporter/commit/be6071eed1769e98f10d866f030daf507408b128))
+
+
+### Code Refactoring
+
+* change action type ([#10](https://github.com/heavywater-dev/structurizr-exporter/issues/10)) ([c29e37e](https://github.com/heavywater-dev/structurizr-exporter/commit/c29e37e7ff60b4b8367697547c0a8c9707e975b0))
+
 ## [1.0.5](https://github.com/heavywater-dev/structurizr-exporter/compare/v1.0.4...v1.0.5) (2025-11-26)
 
 
