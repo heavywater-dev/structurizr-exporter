@@ -1,3 +1,10 @@
+## [1.0.5](https://github.com/heavywater-dev/structurizr-exporter/compare/v1.0.4...v1.0.5) (2025-11-26)
+
+
+### Bug Fixes
+
+* change playwright version for lock ([#9](https://github.com/heavywater-dev/structurizr-exporter/issues/9)) ([db1491d](https://github.com/heavywater-dev/structurizr-exporter/commit/db1491da3632830e869e44676b98e9552246ca0f))
+
 ## [1.0.4](https://github.com/heavywater-dev/structurizr-exporter/compare/v1.0.3...v1.0.4) (2025-11-19)
 
 
