@@ -25,16 +25,32 @@ runs:
       with:
         cache: pnpm
 
-    - name: Install dependencies
-      run: pnpm install --frozen-lockfile
+    - name: Install TypeScript
+      run: pnpm add -g typescript
+      shell: bash
+
+    - name: Install tsx globally
+      run: pnpm add -g tsx
+      shell: bash
+
+    - name: Install Playwright globally
+      run: pnpm add -g playwright
       shell: bash
 
     - name: Install Playwright Browsers
       run: pnpm exec playwright install --with-deps
       shell: bash
 
+    - name: Start Structurizr Lite
+      run: docker run -d --rm -p 8080:8080 -v "${INPUT_STRUCTURIZR_PATH}:/usr/local/structurizr" structurizr/lite:${INPUT_STRUCTURIZR_VERSION}
+      shell: bash
+
     - name: Export Structurizr Diagrams
       run: pnpm exec tsx src/index.ts
+      shell: bash
+
+    - name: Stop Structurizr Lite
+      run: docker stop $(docker ps -q --filter ancestor=structurizr/lite) || true
       shell: bash
 branding:
   icon: 'layers'

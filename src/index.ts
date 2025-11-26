@@ -1,8 +1,9 @@
-import * as core from '@actions/core'
-import { exec } from '@actions/exec'
 import fs from 'fs/promises'
 import path from 'path'
 import { chromium } from 'playwright'
+
+const structurizrPath = process.env.INPUT_STRUCTURIZR_PATH || 'docs/structurizr'
+const outputPath = process.env.INPUT_OUTPUT_PATH || 'docs/images'
 
 async function waitForStructurizr() {
 	for (let i = 0; i < 30; i++) {
@@ -19,7 +20,7 @@ async function exportDiagrams(outputDir: string) {
 	const browser = await chromium.launch({ headless: true })
 	const page = await browser.newPage()
 
-	core.info('Opening Structurizr Lite in browser...')
+	console.log('Opening Structurizr Lite in browser...')
 	await page.goto('http://localhost:8080', { waitUntil: 'networkidle' })
 
 	const diagrams = await page.evaluate(
@@ -39,7 +40,7 @@ async function exportDiagrams(outputDir: string) {
 	const failed: string[] = []
 
 	for (const key of diagrams) {
-		core.info(`Exporting diagram: ${key}`)
+		console.log(`Exporting diagram: ${key}`)
 		await page.evaluate(
 			k => (window as any).structurizr.scripting.changeView(k),
 			key
@@ -63,52 +64,21 @@ async function exportDiagrams(outputDir: string) {
 	await browser.close()
 
 	if (failed.length > 0) {
-		core.warning(
+		console.warn(
 			`Failed to export ${failed.length} diagrams: ${failed.join(', ')}`
 		)
 	}
 
-	core.info(`Successfully exported ${successCount} diagrams to ${outputDir}`)
+	console.log(`Successfully exported ${successCount} diagrams to ${outputDir}`)
 }
 
 async function main() {
-	const structurizrPath =
-		core.getInput('structurizr-path') || 'docs/structurizr'
-	const outputPath = core.getInput('output-path') || 'docs/images'
-	const structurizrVersion = core.getInput('structurizr-version') || 'latest'
-
 	try {
-		core.startGroup('Starting Structurizr Lite')
-		await exec('docker', [
-			'run',
-			'-d',
-			'--rm',
-			'-p',
-			'8080:8080',
-			'-v',
-			`${process.cwd()}/${structurizrPath}:/usr/local/structurizr`,
-			`structurizr/lite:${structurizrVersion}`,
-		])
-		core.endGroup()
-
 		await waitForStructurizr()
-
-		core.startGroup('Exporting diagrams')
 		await exportDiagrams(outputPath)
-		core.endGroup()
 	} catch (err: any) {
-		core.setFailed(err.message)
-	} finally {
-		core.startGroup('Stopping Structurizr Lite')
-		try {
-			await exec('bash', [
-				'-c',
-				'docker stop $(docker ps -q --filter ancestor=structurizr/lite) || true',
-			])
-		} catch {
-			core.warning('Failed to stop Structurizr container, but continuing')
-		}
-		core.endGroup()
+		console.error(err.message)
+		process.exit(1)
 	}
 }
 
