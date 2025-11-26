@@ -27,33 +27,40 @@ runs:
 
     - name: Install TypeScript
       run: pnpm add -g typescript
+      working-directory: ${{ github.workspace }}
       shell: bash
 
     - name: Install tsx globally
       run: pnpm add -g tsx
+      working-directory: ${{ github.workspace }}
       shell: bash
 
     - name: Install Playwright globally
       run: pnpm add -g playwright
+      working-directory: ${{ github.workspace }}
       shell: bash
 
     - name: Install Playwright Browsers
       run: pnpm exec playwright install --with-deps
+      working-directory: ${{ github.workspace }}
       shell: bash
 
     - name: Start Structurizr Lite
       run: docker run -d --rm -p 8080:8080 -v "${{ inputs.structurizr-path }}:/usr/local/structurizr" structurizr/lite:${{ inputs.structurizr-version }}
+      working-directory: ${{ github.workspace }}
       shell: bash
 
     - name: Export Structurizr Diagrams
       run: pnpm exec tsx src/index.ts
       shell: bash
+      working-directory: ${{ github.workspace }}
       env:
         INPUT_STRUCTURIZR_PATH: ${{ inputs.structurizr-path }}
         INPUT_OUTPUT_PATH: ${{ inputs.output-path }}
 
     - name: Stop Structurizr Lite
       run: docker stop $(docker ps -q --filter ancestor=structurizr/lite) || true
+      working-directory: ${{ github.workspace }}
       shell: bash
 branding:
   icon: 'layers'
