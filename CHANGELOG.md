@@ -1,3 +1,10 @@
+## [1.0.8](https://github.com/heavywater-dev/structurizr-exporter/compare/v1.0.7...v1.0.8) (2025-11-26)
+
+
+### Code Refactoring
+
+* delete dist from main and add to tags ([#14](https://github.com/heavywater-dev/structurizr-exporter/issues/14)) ([e3d63f7](https://github.com/heavywater-dev/structurizr-exporter/commit/e3d63f70427d32ce101681bd7c1683f0e162ba55))
+
 ## [1.0.7](https://github.com/heavywater-dev/structurizr-exporter/compare/v1.0.6...v1.0.7) (2025-11-26)
 
 
