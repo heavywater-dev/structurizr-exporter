@@ -35,6 +35,11 @@ runs:
       working-directory: ${{ github.workspace }}
       shell: bash
 
+    - name: Create temporary node_modules folder
+      run: mkdir -p ./temp_node_modules
+      working-directory: ${{ github.workspace }}
+      shell: bash
+
     - name: Install Playwright temporarily
       run: pnpm add -g playwright --prefix ./temp_node_modules
       working-directory: ${{ github.workspace }}
