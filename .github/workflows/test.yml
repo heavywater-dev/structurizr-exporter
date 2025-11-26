@@ -1,0 +1,39 @@
+name: Test Structurizr Exporter
+
+on:
+  push:
+    branches:
+      - '**'
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build
+        run: pnpm run build
+
+      - name: Run Structurizr Exporter (local action)
+        uses: ./
+        with:
+          structurizr-path: docs/structurizr
+          output-path: docs/images
+          structurizr-version: latest
+
+      - name: Show exported diagrams
+        run: ls -l docs/images
