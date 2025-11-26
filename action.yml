@@ -36,17 +36,17 @@ runs:
       shell: bash
 
     - name: Install tsx temporarily
-      run: pnpm add -g tsx --prefix ./temp_node_modules
+      run: pnpm add tsx --prefix ./temp_node_modules
       working-directory: ${{ github.workspace }}
       shell: bash
 
     - name: Install Playwright temporarily
-      run: pnpm add -g playwright --prefix ./temp_node_modules
+      run: pnpm add playwright --prefix ./temp_node_modules
       working-directory: ${{ github.workspace }}
       shell: bash
 
     - name: Install Playwright Browsers
-      run: pnpm exec playwright install --with-deps
+      run: ./temp_node_modules/.bin/playwright install --with-deps
       working-directory: ${{ github.workspace }}
       shell: bash
 
