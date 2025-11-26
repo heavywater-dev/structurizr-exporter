@@ -15,8 +15,24 @@ inputs:
     required: false
     default: 'latest'
 runs:
-  using: 'node20'
-  main: 'dist/index.js'
+  using: 'composite'
+  steps:
+    - name: Install pnpm
+      uses: pnpm/action-setup@v4
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        cache: pnpm
+
+    - name: Install dependencies
+      run: pnpm install --frozen-lockfile
+
+    - name: Install Playwright Browsers
+      run: pnpm exec playwright install --with-deps
+
+    - name: Export Structurizr Diagrams
+      run: pnpm exec ts-node src/index.ts
 branding:
   icon: 'layers'
   color: 'blue'
