@@ -2,12 +2,9 @@
 	"name": "structurizr-exporter",
 	"version": "1.0.5",
 	"description": "GitHub Action for exporting Structurizr diagrams to SVG format",
-	"main": "dist/index.js",
-	"scripts": {
-		"prepare": "pnpm run build",
-		"clean": "rm -rf dist",
-		"build": "ncc build src/index.ts -o dist -m && find dist -type f \\( -name '*.png' -o -name '*.ico' -o -name '*.jpg' \\) -delete"
-	},
+	"author": "heavywater-dev",
+	"license": "ISC",
+	"scripts": {},
 	"keywords": [
 		"structurizr",
 		"architecture",
@@ -20,8 +17,6 @@
 		"automation",
 		"devtools"
 	],
-	"author": "heavywater-dev",
-	"license": "ISC",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/heavywater-dev/structurizr-exporter.git"
@@ -31,7 +26,7 @@
 		"@actions/core": "^1.11.1",
 		"@actions/exec": "^1.1.1",
 		"@actions/io": "^2.0.0",
-		"playwright": "1.56.1"
+		"playwright": "^1.56.1"
 	},
 	"devDependencies": {
 		"@semantic-release/changelog": "^6.0.3",
@@ -41,9 +36,9 @@
 		"@semantic-release/npm": "^11.0.3",
 		"@semantic-release/release-notes-generator": "^12.1.0",
 		"@types/node": "^24.10.0",
-		"@vercel/ncc": "^0.38.4",
 		"conventional-changelog-conventionalcommits": "^7.0.2",
 		"semantic-release": "^22.0.12",
+		"tsx": "^4.20.6",
 		"typescript": "^5.9.3"
 	}
 }
