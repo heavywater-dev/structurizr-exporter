@@ -42,12 +42,15 @@ runs:
       shell: bash
 
     - name: Start Structurizr Lite
-      run: docker run -d --rm -p 8080:8080 -v "${INPUT_STRUCTURIZR_PATH}:/usr/local/structurizr" structurizr/lite:${INPUT_STRUCTURIZR_VERSION}
+      run: docker run -d --rm -p 8080:8080 -v "${{ inputs.structurizr-path }}:/usr/local/structurizr" structurizr/lite:${{ inputs.structurizr-version }}
       shell: bash
 
     - name: Export Structurizr Diagrams
       run: pnpm exec tsx src/index.ts
       shell: bash
+      env:
+        INPUT_STRUCTURIZR_PATH: ${{ inputs.structurizr-path }}
+        INPUT_OUTPUT_PATH: ${{ inputs.output-path }}
 
     - name: Stop Structurizr Lite
       run: docker stop $(docker ps -q --filter ancestor=structurizr/lite) || true
