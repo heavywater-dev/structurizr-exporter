@@ -41,7 +41,7 @@ runs:
       shell: bash
 
     - name: Install Playwright Browsers
-      run: pnpm exec playwright install --with-deps
+      run: pnpm playwright install --with-deps
       working-directory: ${{ github.workspace }}
       shell: bash
 
@@ -51,7 +51,7 @@ runs:
       shell: bash
 
     - name: Export Structurizr Diagrams
-      run: pnpm exec tsx src/index.ts
+      run: pnpm tsx src/index.ts
       shell: bash
       working-directory: ${{ github.workspace }}
       env:
