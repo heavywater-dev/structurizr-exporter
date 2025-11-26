@@ -27,12 +27,15 @@ runs:
 
     - name: Install dependencies
       run: pnpm install --frozen-lockfile
+      shell: bash
 
     - name: Install Playwright Browsers
       run: pnpm exec playwright install --with-deps
+      shell: bash
 
     - name: Export Structurizr Diagrams
       run: pnpm exec ts-node src/index.ts
+      shell: bash
 branding:
   icon: 'layers'
   color: 'blue'
