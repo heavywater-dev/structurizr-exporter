@@ -46,7 +46,7 @@ runs:
       shell: bash
 
     - name: Start Structurizr Lite
-      run: docker run -d --rm -p 8080:8080 -v "${{ inputs.structurizr-path }}:/usr/local/structurizr" structurizr/lite:${{ inputs.structurizr-version }}
+      run: docker run -d --rm -p 8080:8080 -v "${{ github.workspace }}/${{ inputs.structurizr-path }}:/usr/local/structurizr" structurizr/lite:${{ inputs.structurizr-version }}
       working-directory: ${{ github.workspace }}
       shell: bash
 
