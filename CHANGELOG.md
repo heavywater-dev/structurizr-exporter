@@ -1,3 +1,10 @@
+## [1.0.7](https://github.com/heavywater-dev/structurizr-exporter/compare/v1.0.6...v1.0.7) (2025-11-26)
+
+
+### Code Refactoring
+
+* action type ([#13](https://github.com/heavywater-dev/structurizr-exporter/issues/13)) ([ccbde03](https://github.com/heavywater-dev/structurizr-exporter/commit/ccbde03a428c457d26dcc7769b04c6052ba4e1e3))
+
 ## [1.0.6](https://github.com/heavywater-dev/structurizr-exporter/compare/v1.0.5...v1.0.6) (2025-11-26)
 
 
