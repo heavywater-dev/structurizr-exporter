@@ -35,13 +35,13 @@ runs:
       working-directory: ${{ github.workspace }}
       shell: bash
 
-    - name: Install Playwright globally
-      run: pnpm add -g playwright
+    - name: Install Playwright temporarily
+      run: pnpm add -g playwright --prefix ./temp_node_modules
       working-directory: ${{ github.workspace }}
       shell: bash
 
     - name: Install Playwright Browsers
-      run: pnpm playwright install --with-deps
+      run: pnpm exec playwright install --with-deps
       working-directory: ${{ github.workspace }}
       shell: bash
 
@@ -51,7 +51,7 @@ runs:
       shell: bash
 
     - name: Export Structurizr Diagrams
-      run: pnpm tsx src/index.ts
+      run: pnpm exec --prefix ./temp_node_modules tsx src/index.ts
       shell: bash
       working-directory: ${{ github.workspace }}
       env:
